@@ -22,35 +22,25 @@ def fully_contained(a1, a2):
     a2_contains_a1 = (a2[0] <= a1[0]) and (a2[1] >= a1[1])
     return a1_contains_a2 or a2_contains_a1
 
-def part1():
-    pairs = read_pairs()
-    sum_fully_contained = 0
-    for str_pair in pairs:
-        pair = parse_pair(str_pair)
-        is_fully_contained = fully_contained(pair[0], pair[1])
-        if is_fully_contained:
-            sum_fully_contained += 1
-    return sum_fully_contained
-
 def overlap(a1, a2):
     a1_overlaps_a2 = (a1[1] >= a2[0]) and (a1[0] <= a2[1])
     a2_overlaps_a1 = (a2[1] >= a1[0]) and (a2[0] <= a1[1])
     return a1_overlaps_a2 or a2_overlaps_a1
 
-def part2():
+def solve(function_to_evaluate):
     pairs = read_pairs()
-    sum_overlap = 0
+    total_sum = 0
     for str_pair in pairs:
         pair = parse_pair(str_pair)
-        pairs_overlap = overlap(pair[0], pair[1])
-        if pairs_overlap:
-            sum_overlap += 1
-    return sum_overlap
+        condition_met = function_to_evaluate(pair[0], pair[1])
+        if condition_met:
+            total_sum += 1
+    return total_sum
 
 def main():
-    result1 = part1()
+    result1 = solve(fully_contained)
     print(result1)
-    result2 = part2()
+    result2 = solve(overlap)
     print(result2)
 
 if __name__ == "__main__":
