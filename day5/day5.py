@@ -49,7 +49,7 @@ def get_stacks_after_instruction(stacks, instruction):
     i = 0
 
     while i < num_to_move:
-        removed_item = stacks[from_col].pop(0)
+        removed_item = end_stacks[from_col].pop(0)
         end_stacks[to_col].insert(0, removed_item)
         i+=1
 
@@ -73,7 +73,7 @@ def get_stacks_after_bulk_move(stacks, instruction):
 
     ordered_list = []
     while i < num_to_move:
-        removed_item = stacks[from_col].pop(0)
+        removed_item = end_stacks[from_col].pop(0)
         ordered_list.append(removed_item)
         i+=1
     end_stacks[to_col] = ordered_list + stacks[to_col]
