@@ -25,7 +25,7 @@ def parse_input():
     for string_row in raw_stacks:
         row_arr = parse_row(string_row)
         grid.append(row_arr)
-    stacks = [[], [], [], [], [], [], [], [], []]
+    stacks = [[] for i in range(len(grid[0]))]
     for i in range(0, len(grid)):
         for j in range(0, len(grid[0])):
             item = grid[i][j]
